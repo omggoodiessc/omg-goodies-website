@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OMG Goodies LLC — Order Online</title>
+<meta name="description" content="Handmade cheesecakes, chewies, brownies &amp; more from OMG Goodies LLC. Order online for delivery or inquire about catering.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Caveat:wght@600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="wordmark" href="#top">OMG <span>Goodies</span></a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="#menu">Menu</a>
+      <a href="#catering">Catering</a>
+    </nav>
+    <button class="cart-btn" id="cartToggle" aria-haspopup="dialog" aria-controls="cartPanel" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 3h2l.4 2M7 13h10l3-8H5.4M7 13L5.4 5M7 13l-1.5 3.5A1 1 0 0 0 6.4 18H17M17 18a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3ZM9 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="cart-btn-label">Cart</span>
+      <span class="cart-count" id="cartCount" hidden>0</span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">Small-batch &amp; made to order</p>
+        <h1>Dessert, delivered<br>with love.</h1>
+        <p class="hero-sub">Cheesecake parfaits, chewies, brownies and more — baked fresh weekly by OMG Goodies LLC and delivered right to your door.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#menu">See this week's menu</a>
+          <a class="btn btn-ghost" href="#catering">Planning an event?</a>
+        </div>
+      </div>
+      <div class="hero-special" id="specialCard" hidden>
+        <div class="pin" aria-hidden="true">♥</div>
+        <p class="special-label" id="specialLabel">This Week's Special</p>
+        <p class="special-name" id="specialName">—</p>
+        <p class="special-price">
+          <span class="special-price-was" id="specialWas"></span>
+          <span class="special-price-now" id="specialNow"></span>
+        </p>
+        <p class="special-date" id="specialDate"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MENU ============ -->
+  <section class="menu-section" id="menu">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">This week's menu</p>
+        <h2>Fresh this week</h2>
+        <p class="section-sub" id="menuUpdated">Menu updates weekly — check back for new flavors.</p>
+      </div>
+
+      <div id="menuStatus" class="menu-status" hidden></div>
+      <div id="menuCategories"></div>
+    </div>
+  </section>
+
+  <!-- ============ CATERING ============ -->
+  <section class="catering-section" id="catering">
+    <div class="wrap catering-inner">
+      <div class="catering-copy">
+        <p class="eyebrow">Weddings, showers &amp; events</p>
+        <h2>Catering for your next event</h2>
+        <p>From dessert tables to party trays, OMG Goodies LLC caters events of every size. Tell us a little about what you're planning and we'll follow up with options and pricing.</p>
+        <ul class="catering-list">
+          <li>Custom dessert tables &amp; grazing spreads</li>
+          <li>Bulk trays of chewies, brownies &amp; parfaits</li>
+          <li>Delivery &amp; setup available</li>
+        </ul>
+      </div>
+      <form class="catering-form" id="cateringForm">
+        <div class="form-row">
+          <label for="catName">Name</label>
+          <input type="text" id="catName" name="name" required>
+        </div>
+        <div class="form-row form-row-split">
+          <div>
+            <label for="catEmail">Email</label>
+            <input type="email" id="catEmail" name="email" required>
+          </div>
+          <div>
+            <label for="catPhone">Phone</label>
+            <input type="tel" id="catPhone" name="phone" required>
+          </div>
+        </div>
+        <div class="form-row form-row-split">
+          <div>
+            <label for="catDate">Event date</label>
+            <input type="date" id="catDate" name="eventDate" required>
+          </div>
+          <div>
+            <label for="catGuests">Guest count</label>
+            <input type="number" id="catGuests" name="guestCount" min="1" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="catType">Event type</label>
+          <select id="catType" name="eventType">
+            <option>Wedding</option>
+            <option>Baby / Bridal Shower</option>
+            <option>Birthday</option>
+            <option>Corporate</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="catMessage">Tell us more</label>
+          <textarea id="catMessage" name="message" rows="4" placeholder="Flavors, budget, theme — anything helps"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Send inquiry</button>
+        <p class="form-note" id="cateringNote"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <p class="wordmark">OMG <span>Goodies</span></p>
+        <p class="footer-tag">Thank you for supporting our small business! ♥</p>
+      </div>
+      <div class="footer-allergy">
+        <p class="footer-heading">Allergy notice</p>
+        <p>Our products may contain nuts, dairy, eggs, wheat, soy, and other allergens. Please tell us about any allergies before ordering.</p>
+      </div>
+      <div class="footer-contact">
+        <p class="footer-heading">Ordering</p>
+        <p>Card payments are processed securely through Square. Your order is confirmed once payment is complete.</p>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<!-- ============ CART PANEL ============ -->
+<div class="overlay" id="overlay" hidden></div>
+<aside class="cart-panel" id="cartPanel" role="dialog" aria-modal="true" aria-label="Your cart" hidden>
+  <div class="cart-panel-head">
+    <h2>Your cart</h2>
+    <button class="icon-btn" id="cartClose" aria-label="Close cart">✕</button>
+  </div>
+
+  <div class="cart-panel-body" id="cartBody">
+    <!-- STEP 1: cart items -->
+    <div id="cartStepItems">
+      <div id="cartItems" class="cart-items"></div>
+      <p class="cart-empty" id="cartEmpty">Your cart is empty. Add something sweet!</p>
+      <div class="cart-totals" id="cartTotalsItems" hidden>
+        <div class="cart-total-row"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+        <div class="cart-total-row"><span>Delivery</span><span id="cartDeliveryFee">$0.00</span></div>
+        <div class="cart-total-row cart-total-grand"><span>Total</span><span id="cartTotal">$0.00</span></div>
+        <button class="btn btn-primary btn-block" id="goToCheckout">Checkout</button>
+      </div>
+    </div>
+
+    <!-- STEP 2: checkout form -->
+    <div id="cartStepCheckout" hidden>
+      <button class="text-btn" id="backToCart">← Back to cart</button>
+      <form id="checkoutForm">
+        <h3>Delivery details</h3>
+        <div class="form-row">
+          <label for="custName">Full name</label>
+          <input type="text" id="custName" name="name" required>
+        </div>
+        <div class="form-row form-row-split">
+          <div>
+            <label for="custEmail">Email</label>
+            <input type="email" id="custEmail" name="email" required>
+          </div>
+          <div>
+            <label for="custPhone">Phone</label>
+            <input type="tel" id="custPhone" name="phone" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="custAddress">Delivery address</label>
+          <input type="text" id="custAddress" name="address" placeholder="Street, city, state, ZIP" required>
+        </div>
+        <div class="form-row">
+          <label for="custDate">Delivery date</label>
+          <input type="date" id="custDate" name="deliveryDate" required>
+        </div>
+        <div class="form-row">
+          <label for="custNotes">Order notes / allergies</label>
+          <textarea id="custNotes" name="notes" rows="2"></textarea>
+        </div>
+
+        <h3>Payment</h3>
+        <div class="cart-totals cart-totals-checkout">
+          <div class="cart-total-row"><span>Subtotal</span><span id="checkoutSubtotal">$0.00</span></div>
+          <div class="cart-total-row"><span>Delivery</span><span id="checkoutDeliveryFee">$0.00</span></div>
+          <div class="cart-total-row cart-total-grand"><span>Total</span><span id="checkoutTotal">$0.00</span></div>
+        </div>
+        <div id="card-container"></div>
+        <p class="secure-note">🔒 Payments are processed securely by Square. Card details never touch our server.</p>
+        <button type="submit" class="btn btn-primary btn-block" id="payButton">Place order</button>
+        <p class="form-note" id="checkoutNote"></p>
+      </form>
+    </div>
+
+    <!-- STEP 3: confirmation -->
+    <div id="cartStepConfirm" hidden>
+      <div class="confirm">
+        <p class="confirm-icon">🎉</p>
+        <h3>Order placed!</h3>
+        <p id="confirmMessage">Thank you for supporting our small business!</p>
+        <p class="confirm-order-id" id="confirmOrderId"></p>
+        <button class="btn btn-ghost btn-block" id="confirmClose">Close</button>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
